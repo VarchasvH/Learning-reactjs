@@ -1,19 +1,42 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-function Greetings() {
-  return (
-    <div>
-      <Person />
-      <Message />
-    </div>
-  );
-}
+import "./index.css";
 
-const Person = () => <h2>john doe</h2>;
-const Message = () => {
-  return <p>this is my message</p>;
+const BookList = () => {
+  return (
+    <section className="bookList">
+      <Book />
+      <Book />
+      <Book />
+    </section>
+  );
+};
+const Book = () => {
+  return (
+    <article className="book">
+      <Image />
+      <Title />
+      <Author />
+    </article>
+  );
 };
 
-const root = ReactDOM.createRoot(document.querySelector("#root"));
-root.render(<Greetings />);
+const Image = () => (
+  <img
+    src="https://m.media-amazon.com/images/I/81Ls+SBCLiL._SY466_.jpg"
+    alt="Atomic Habits: the life-changing million-copy"
+  />
+);
+const Title = () => <h2>Atomic Habits</h2>;
+const Author = () => {
+  const inlineHeadingStyles = {
+    color: "#A5C9FF",
+    fontSize: "0.75rem",
+    marginTop: "0.5rem",
+  };
+  return <h4 style={inlineHeadingStyles}>James Clear </h4>;
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<BookList />);

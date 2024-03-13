@@ -112,3 +112,78 @@ function Greetings() {
      return <p>this is my message</p>;
    };
    ```
+
+# Local Images
+
+There are three types of images that we can use:
+
+1. **External images** (hosted on different server) - just need an url.
+2. **Local images (public folder)** - less performant.
+3. **Local images (src folder)** - better solution for assets, since under the hood they get optimized.
+
+# CSS
+
+- You can add inline CSS, CSS files or a third way is to define css inside a component itself.
+- Use what you prefer.
+
+```js
+const Author = () => {
+  const inlineHeadingStyles = {
+    color: "#617d98",
+    fontSize: "0.75rem",
+    marginTop: "0.5rem",
+  };
+  return <h4 style={inlineHeadingStyles}>Jordan Moore </h4>;
+};
+```
+
+# Current Code
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+import "./index.css";
+
+const BookList = () => {
+  return (
+    <section className="bookList">
+      <Book />
+      <Book />
+      <Book />
+    </section>
+  );
+};
+const Book = () => {
+  return (
+    <article className="book">
+      <Image />
+      <Title />
+      <Author />
+    </article>
+  );
+};
+
+const Image = () => (
+  <img
+    src="https://m.media-amazon.com/images/I/81Ls+SBCLiL._SY466_.jpg"
+    alt="Atomic Habits: the life-changing million-copy"
+  />
+);
+const Title = () => <h2>Atomic Habits</h2>;
+const Author = () => {
+  const inlineHeadingStyles = {
+    color: "#A5C9FF",
+    fontSize: "0.75rem",
+    marginTop: "0.5rem",
+  };
+  return <h4 style={inlineHeadingStyles}>James Clear </h4>;
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<BookList />);
+```
+
+# JSX - Javascript
+
+Refactoring all the code to a single component.
