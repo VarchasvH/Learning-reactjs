@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# Some notes about Components in React.JS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    - Component = Function
 
-## Available Scripts
+    - Components in React are JS functions.
 
-In the project directory, you can run:
+    - Component/Function must start with a capital letter.
 
-### `npm start`
+    - To use the function, it must be exported.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    - Which essentially makes the component and we can grab it anywhere and render it.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    - ES7 snippets: rface(arrow and export) and rfce(normal function and export).
 
-### `npm test`
+    - In the long run, React.createElement is worse and more confusing than writing html in return.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    - About Root - Everything is done inside the root div.
 
-### `npm run build`
+# Render a component
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+root.render(<FUNCTION_NAME />);
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Ways to create a React Component
 
-### `npm run eject`
+```javascript
+// JSX WAY
+function Greeting() {
+  return (
+    <div>
+      <h2>hello world</h2>
+    </div>
+  );
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+// REACT WAY
+const Greeting = () => {
+  return React.createElement(
+    "div",
+    {},
+    React.createElement("h2", {}, "hello world")
+  );
+};
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# JSX RULES
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. We must always return a single element[One parent element] INSIDE RETURN.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```javascript
+function Greetings() {
+  return (
+    <div>
+      <div>
+        <h3>
+          <ul>
+            <li>
+              <a href="#">hello-world</a>
+            </li>
+          </ul>
+        </h3>
+      </div>
+    </div>
+  );
+}
+```
 
-## Learn More
+- Not a rule but try to use specific html semantics such as navbar, sections instead of just using div.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- You could also use fragments.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  ```javascript
+  return <React.Fragment>...rest of the return</React.Fragment>;
 
-### Code Splitting
+  // shorthand
+  return <>...rest of the return</>;
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. JSX uses camelCase property naming convention.
 
-### Analyzing the Bundle Size
+3. className instead of class.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. Close every element / Self Closing </>.
 
-### Making a Progressive Web App
+5. Formatting - Write the opening tag or () in the same line as return.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```js
+   function(){
+       return <></>;
+       // Or
+       return ();
+   };
+   ```
 
-### Advanced Configuration
+6. You can also nest components.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   ```js
+   function Greeting() {
+     return (
+       <div>
+         <Person /> // nested
+         <Message /> // nested
+       </div>
+     );
+   }
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   const Person = () => <h2>john doe</h2>;
+   const Message = () => {
+     return <p>this is my message</p>;
+   };
+   ```
