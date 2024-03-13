@@ -1,15 +1,14 @@
 /* 
- Some notes about Components in React.JS
+ ------------ Some notes about Components in React.JS -------------
+  - Think of component? Think of function.
 
  - To create components in React, we need to create JS functions.
-
- - Think of component? Think of function.
 
  - We must name a function with a capital letter.
 
  - When we create a function, we also need to export it.
 
- -  Which essentially makes the component and we can grab it anywhere and render it.
+ - Which essentially makes the component and we can grab it anywhere and render it.
 
  - This did not work on vite.
 */
