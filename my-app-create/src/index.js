@@ -12,13 +12,13 @@
 
  - This did not work on vite.
 */
-import React from 'react'
-import ReactDOM  from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 const Greetings = () => {
-    return <h2> This is the first component</h2>;
-}
+  return <h2> This is the first component</h2>;
+};
 export default Greetings;
 
-const root = ReactDOM.createRoot(document.querySelector('#root'));
-root.render(<Greetings />)
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+root.render(<Greetings />);
