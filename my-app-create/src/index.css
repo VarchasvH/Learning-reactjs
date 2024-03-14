@@ -37,3 +37,20 @@ body {
   width: 100%;
   object-fit: cover;
 }
+
+.book h4 {
+  color: "#A5C9FF";
+  font-size: "0.75rem";
+  margin-top: "0.5rem";
+  letter-spacing: 2px;
+}
+
+button {
+  background-color: cyan;
+  color: thistle;
+  font-size: 1rem;
+  align-content: center;
+  position: relative;
+  top: 20px;
+  left: 0px;
+}

@@ -3,39 +3,54 @@ import ReactDOM from "react-dom/client";
 
 import "./index.css";
 
+const firstBook = {
+  title: "Atomic Habits",
+  author: "James Clear",
+  img: "https://m.media-amazon.com/images/I/81Ls+SBCLiL._SY466_.jpg",
+  link: "https://amzn.eu/d/hqGOBiQ",
+};
+const secondBook = {
+  title: "THE 48 LAWS OF POWER",
+  author: "Robert Greene",
+  img: "https://m.media-amazon.com/images/I/61J3Uu4jOLL._SY466_.jpg",
+  link: "https://amzn.eu/d/5rWYai4",
+};
+const thirdBook = {
+  title: "The Psychology of Money",
+  author: "Morgan Housel",
+  img: "https://m.media-amazon.com/images/I/61-hMfd7NGL._SY466_.jpg",
+  link: "https://amzn.eu/d/5rWYai4",
+};
+
 const BookList = () => {
   return (
     <section className="bookList">
-      <Book />
-      <Book />
-      <Book />
+      <Book
+        title={firstBook.title}
+        author={firstBook.author}
+        img={firstBook.img}
+      />
+      <Book
+        title={secondBook.title}
+        author={secondBook.author}
+        img={secondBook.img}
+      />
+      <Book
+        title={thirdBook.title}
+        author={thirdBook.author}
+        img={thirdBook.img}
+      />
     </section>
   );
 };
-const Book = () => {
+const Book = ({ img, title, author, children }) => {
   return (
     <article className="book">
-      <Image />
-      <Title />
-      <Author />
+      <img src={img} alt={title} />
+      <h4>{title.toUpperCase()}</h4>
+      <h4>{author.toUpperCase()}</h4>
     </article>
   );
-};
-
-const Image = () => (
-  <img
-    src="https://m.media-amazon.com/images/I/81Ls+SBCLiL._SY466_.jpg"
-    alt="Atomic Habits: the life-changing million-copy"
-  />
-);
-const Title = () => <h2>Atomic Habits</h2>;
-const Author = () => {
-  const inlineHeadingStyles = {
-    color: "#A5C9FF",
-    fontSize: "0.75rem",
-    marginTop: "0.5rem",
-  };
-  return <h4 style={inlineHeadingStyles}>James Clear </h4>;
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

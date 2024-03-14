@@ -186,4 +186,118 @@ root.render(<BookList />);
 
 # JSX - Javascript
 
-Refactoring all the code to a single component.
+- Refactoring all the code to a single component.
+- Move the css to the css file.
+- Dynamic = Less hardcoding.
+- Whenever we want to add js code we use {}.
+- You cannot write an expression that does not return anything, inside {}.
+
+```js
+const Book = () => {
+  const title = "Atomic Habits";
+  const author = "James Clear";
+  return (
+    <article className="book">
+      <img
+        src="https://m.media-amazon.com/images/I/81Ls+SBCLiL._SY466_.jpg"
+        alt="Atomic Habits: the life-changing million-copy"
+      />
+      <h2>{title.toUpperCase()}</h2>
+      <h4>{author.toUpperCase()}</h4>
+    </article>
+  );
+};
+```
+
+# Props in React
+
+- You add Props to the function as parameters and then you can access them when you render/use them.
+
+```jsx
+const Book(props) => {}; // Defining the prop in the function
+
+<Book job = 'Developer'/>;
+<Book experience = {5}/>;
+```
+
+# Current Code
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+import "./index.css";
+
+const title = "Atomic Habits";
+const author = "James Clear";
+const img = "https://m.media-amazon.com/images/I/81Ls+SBCLiL._SY466_.jpg";
+
+const BookList = () => {
+  return (
+    <section className="bookList">
+      <Book img={img} title={title} author={author} />
+      <Book img={img} title={title} author={author} />
+    </section>
+  );
+};
+const Book = (props) => {
+  return (
+    <article className="book">
+      <img src={props.img} alt={props.title} />
+      <h2>{props.title.toUpperCase()}</h2>
+      <h4>{props.author.toUpperCase()}</h4>
+    </article>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<BookList />);
+```
+
+# Access Props - Multiple approaches
+
+There is no correct way, use what you want to.
+
+1. You can also destructure props inside your code, so you don't have to type `props.title`, you can just write `title`.
+
+   ```js
+   const Book = (props) => {
+     const { img, title, author } = props;
+     return (
+       <article className="book">
+         <img src={img} alt={title} />
+         <h2>{title}</h2>
+         <h4>{author} </h4>
+       </article>
+     );
+   };
+   ```
+
+2. You can add the properties inside the function properties too.
+
+   ```js
+   const Book = ({ img, title, author }) => {
+     return (
+       <article className="book">
+         <img src={img} alt={title} />
+         <h2>{title}</h2>
+         <h4>{author} </h4>
+       </article>
+     );
+   };
+   ```
+
+# Special Prop: children
+
+- If we want to render something between the component tags, we must use children.
+- For example, I want to add a buy me button, but I cannot add it to a specific book using the <Book> or any other method.
+
+```jsx
+<Book title={secondBook.title} author={secondBook.author} img={secondBook.img}>
+  <button className="secondBook">
+    <a href={secondBook.link}> Buy Me!</a>
+  </button>
+</Book>
+```
+
+# Setup Lists
