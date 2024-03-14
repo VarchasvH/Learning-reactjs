@@ -300,4 +300,35 @@ There is no correct way, use what you want to.
 </Book>
 ```
 
-# Setup Lists
+# Understanding Lists
+
+- Add all the book objects into an array.
+- Then we use the map method to wrap them around in an html tag.
+
+```js
+const names = ["varchasv", "ribhu", "anmol", "luxay", "rohan"];
+
+const newNames = names.map((name) => {
+  return <h1>{name}</h1>;
+});
+
+const BookList = () => {
+  return <section className="bookList">{newNames}</section>;
+};
+```
+
+# Book list
+
+```js
+const BookList = () => {
+  return (
+    <section className="bookList">
+      {books.map((book) => {
+        return <Book title={book.title} author={book.author} img={book.img} />;
+      })}
+    </section>
+  );
+};
+```
+
+[NOTES](https://github.com/john-smilga/react-course-v3/blob/main/01-fundamentals/README.md)

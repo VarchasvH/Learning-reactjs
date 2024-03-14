@@ -22,7 +22,8 @@ body {
   }
 }
 .book {
-  background: rgba(65, 65, 65, 0.7);
+  background: #f1f5f8;
+  color: #222;
   border-radius: 1rem;
   padding: 2rem;
   text-align: center;
@@ -43,14 +44,4 @@ body {
   font-size: "0.75rem";
   margin-top: "0.5rem";
   letter-spacing: 2px;
-}
-
-button {
-  background-color: cyan;
-  color: thistle;
-  font-size: 1rem;
-  align-content: center;
-  position: relative;
-  top: 20px;
-  left: 0px;
 }
