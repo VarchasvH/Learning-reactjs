@@ -9,6 +9,18 @@ function App() {
     if (counter < 20) {
       counter = counter + 1;
       setCounter(counter);
+      /* Interview Question:-
+      If we write them more times than needed, it will still return only +1.
+      They are sent as a batch and they do the same thing.
+      setCounter(counter);
+      setCounter(counter);
+      setCounter(counter);
+
+      To Do the same we need to do:
+      setCounter(prevCounter => prevCounter + 1);
+      setCounter(prevCounter => prevCounter + 1);
+      setCounter(prevCounter => prevCounter + 1);
+      */
     } else {
       alert("You've reached the maximum number of clicks!");
     }
