@@ -24,5 +24,6 @@
 Where we create a store is opinionated, in this example we will create it inside src/app/store.js.
 
 ```js
-
+import { configureStore } from "@reduxjs/toolkit";
+export const store = configureStore({});
 ```
